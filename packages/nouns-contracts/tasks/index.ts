@@ -6,4 +6,6 @@ export * from './deploy-local';
 export * from './mint-noun';
 export * from './populate-descriptor';
 export * from './run-local';
+export * from './deploy-rinkeby';
+export * from './run-rinkeby';
 export * from './verify-etherscan';
