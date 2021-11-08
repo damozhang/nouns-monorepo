@@ -1,9 +1,4 @@
-import {
-  Auction,
-  auctionHouseContractFactory,
-  AuctionHouseContractFunction,
-} from '../../wrappers/nounsAuction';
-import config from '../../config';
+import { Auction, AuctionHouseContractFunction } from '../../wrappers/nounsAuction';
 import { connectContractToSigner, useEthers, useContractFunction } from '@usedapp/core';
 import { useAppSelector } from '../../hooks';
 import React, { useEffect, useState, useRef, ChangeEvent, useCallback } from 'react';
@@ -14,6 +9,8 @@ import { Spinner, InputGroup, FormControl, Button } from 'react-bootstrap';
 import { useAuctionMinBidIncPercentage } from '../../wrappers/nounsAuction';
 import { useAppDispatch } from '../../hooks';
 import { AlertModal, setAlertModal } from '../../state/slices/application';
+import { NounsAuctionHouseFactory } from '@nouns/sdk';
+import config from '../../config';
 
 const computeMinimumNextBid = (
   currentBid: BigNumber,
@@ -49,7 +46,9 @@ const Bid: React.FC<{
   const activeAccount = useAppSelector(state => state.account.activeAccount);
   const { library } = useEthers();
   const { auction, auctionEnded } = props;
-  const auctionHouseContract = auctionHouseContractFactory(config.auctionProxyAddress);
+  const nounsAuctionHouseContract = new NounsAuctionHouseFactory().attach(
+    config.addresses.nounsAuctionHouseProxy,
+  );
 
   const account = useAppSelector(state => state.account.activeAccount);
 
@@ -71,11 +70,11 @@ const Bid: React.FC<{
   );
 
   const { send: placeBid, state: placeBidState } = useContractFunction(
-    auctionHouseContract,
+    nounsAuctionHouseContract,
     AuctionHouseContractFunction.createBid,
   );
   const { send: settleAuction, state: settleAuctionState } = useContractFunction(
-    auctionHouseContract,
+    nounsAuctionHouseContract,
     AuctionHouseContractFunction.settleCurrentAndCreateNewAuction,
   );
 
@@ -108,7 +107,7 @@ const Bid: React.FC<{
     }
 
     const value = utils.parseEther(bidInputRef.current.value.toString());
-    const contract = connectContractToSigner(auctionHouseContract, undefined, library);
+    const contract = connectContractToSigner(nounsAuctionHouseContract, undefined, library);
     const gasLimit = await contract.estimateGas.createBid(auction.nounId, {
       value,
     });
