@@ -111,7 +111,7 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/vote" className={classes.nounsNavLink}>
               DAO
             </Nav.Link>
-            {/* <Nav.Link
+            <Nav.Link
               href={externalURL(ExternalURL.notion)}
               className={classes.nounsNavLink}
               target="_blank"
