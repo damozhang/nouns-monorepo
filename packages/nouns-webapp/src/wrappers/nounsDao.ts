@@ -80,7 +80,7 @@ export interface ProposalTransaction {
 }
 
 const abi = new utils.Interface(NounsDAOABI);
-const nounsDaoContract = new NounsDaoLogicV1Factory().attach(config.addresses.nounsDAOProxy);
+const nounsDaoContract = new NounsDaoLogicV1Factory().attach(config.addresses.nounsDAOProxy) as any;
 const proposalCreatedFilter = nounsDaoContract.filters?.ProposalCreated(
   null,
   null,

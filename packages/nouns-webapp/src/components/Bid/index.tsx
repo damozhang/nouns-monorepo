@@ -1,4 +1,4 @@
-import { Auction, AuctionHouseContractFunction } from '../../wrappers/nounsAuction';
+import { Auction,AuctionHouseContractFunction } from '../../wrappers/nounsAuction';
 import { connectContractToSigner, useEthers, useContractFunction } from '@usedapp/core';
 import { useAppSelector } from '../../hooks';
 import React, { useEffect, useState, useRef, ChangeEvent, useCallback } from 'react';
@@ -48,7 +48,7 @@ const Bid: React.FC<{
   const { auction, auctionEnded } = props;
   const nounsAuctionHouseContract = new NounsAuctionHouseFactory().attach(
     config.addresses.nounsAuctionHouseProxy,
-  );
+  ) as any;
 
   const account = useAppSelector(state => state.account.activeAccount);
 
