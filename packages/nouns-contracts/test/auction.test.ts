@@ -4,9 +4,9 @@ import { solidity } from 'ethereum-waffle';
 import { constants } from 'ethers';
 import { ethers, upgrades } from 'hardhat';
 import {
-  MaliciousBidderFactory,
+  MaliciousBidder__factory,
   NounsAuctionHouse,
-  NounsDescriptorFactory,
+  NounsDescriptor__factory,
   NounsToken,
   Weth,
 } from '../typechain';
@@ -51,7 +51,7 @@ describe('NounsAuctionHouse', () => {
 
     const descriptor = await nounsToken.descriptor();
 
-    await populateDescriptor(NounsDescriptorFactory.connect(descriptor, deployer));
+    await populateDescriptor(NounsDescriptor__factory.connect(descriptor, deployer));
 
     await nounsToken.setMinter(nounsAuctionHouse.address);
   });
@@ -157,7 +157,7 @@ describe('NounsAuctionHouse', () => {
 
     const { nounId } = await nounsAuctionHouse.auction();
 
-    const maliciousBidderFactory = new MaliciousBidderFactory(bidderA);
+    const maliciousBidderFactory = new MaliciousBidder__factory(bidderA);
     const maliciousBidder = await maliciousBidderFactory.deploy();
 
     const maliciousBid = await maliciousBidder

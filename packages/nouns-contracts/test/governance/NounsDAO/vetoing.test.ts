@@ -25,12 +25,12 @@ import {
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 import {
   NounsToken,
-  NounsDescriptorFactory,
-  NounsDaoProxyFactory,
+  NounsDescriptor__factory,
+  NounsDaoProxy__factory,
   NounsDaoLogicV1,
-  NounsDaoLogicV1Factory,
+  NounsDaoLogicV1__factory,
   NounsDaoExecutor,
-  NounsDaoExecutorFactory,
+  NounsDaoExecutor__factory,
 } from '../../../typechain';
 
 chai.use(solidity);
@@ -76,17 +76,20 @@ async function reset(): Promise<void> {
   });
 
   // Deploy NounsDAOExecutor with pre-computed Delegator address
-  timelock = await new NounsDaoExecutorFactory(deployer).deploy(govDelegatorAddress, timelockDelay);
+  timelock = await new NounsDaoExecutor__factory(deployer).deploy(
+    govDelegatorAddress,
+    timelockDelay,
+  );
   const timelockAddress = timelock.address;
 
   // Deploy Delegate
-  const { address: govDelegateAddress } = await new NounsDaoLogicV1Factory(deployer).deploy();
+  const { address: govDelegateAddress } = await new NounsDaoLogicV1__factory(deployer).deploy();
 
   // Deploy Nouns token
   token = await deployNounsToken(deployer);
 
   // Deploy Delegator
-  await new NounsDaoProxyFactory(deployer).deploy(
+  await new NounsDaoProxy__factory(deployer).deploy(
     timelockAddress,
     token.address,
     vetoer.address,
@@ -99,9 +102,9 @@ async function reset(): Promise<void> {
   );
 
   // Cast Delegator as Delegate
-  gov = NounsDaoLogicV1Factory.connect(govDelegatorAddress, deployer);
+  gov = NounsDaoLogicV1__factory.connect(govDelegatorAddress, deployer);
 
-  await populateDescriptor(NounsDescriptorFactory.connect(await token.descriptor(), deployer));
+  await populateDescriptor(NounsDescriptor__factory.connect(await token.descriptor(), deployer));
 
   snapshotId = await ethers.provider.send('evm_snapshot', []);
 }

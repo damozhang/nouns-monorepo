@@ -2,7 +2,7 @@ import chai from 'chai';
 import { ethers } from 'hardhat';
 import { BigNumber as EthersBN, constants } from 'ethers';
 import { solidity } from 'ethereum-waffle';
-import { NounsDescriptorFactory, NounsToken } from '../typechain';
+import { NounsDescriptor__factory, NounsToken } from '../typechain';
 import { deployNounsToken, populateDescriptor } from './utils';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
 
@@ -21,7 +21,7 @@ describe('NounsToken', () => {
 
     const descriptor = await nounsToken.descriptor();
 
-    await populateDescriptor(NounsDescriptorFactory.connect(descriptor, deployer));
+    await populateDescriptor(NounsDescriptor__factory.connect(descriptor, deployer));
   });
 
   beforeEach(async () => {
@@ -59,11 +59,11 @@ describe('NounsToken', () => {
   });
 
   it('should set symbol', async () => {
-    expect(await nounsToken.symbol()).to.eq('NOUN');
+    expect(await nounsToken.symbol()).to.eq('DAY');
   });
 
   it('should set name', async () => {
-    expect(await nounsToken.name()).to.eq('Nouns');
+    expect(await nounsToken.name()).to.eq('Day');
   });
 
   it('should allow minter to mint a noun to itself', async () => {
