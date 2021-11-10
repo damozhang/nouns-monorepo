@@ -19,6 +19,11 @@ import StandaloneNoun from '../StandaloneNoun';
 import config from '../../config';
 import { buildEtherscanAddressLink } from '../../utils/etherscan';
 
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend(utc);
+
 const openEtherscanBidHistory = () => {
   const url = buildEtherscanAddressLink(config.addresses.nounsAuctionHouseProxy);
   window.open(url);
@@ -54,9 +59,13 @@ const AuctionActivity: React.FC<AuctionActivityProps> = (props: AuctionActivityP
     setShowBidHistoryModal(false);
   };
 
+  const auctionStartTimeUTC = dayjs(auction.startTime.toNumber() * 1000)
+    .utc()
+    .format('MMDD');
+
   const bidHistoryTitle = (
     <h1>
-      Noun {auction && auction.nounId.toString()}
+      DAY {auction && auctionStartTimeUTC}
       <br /> Bid History
     </h1>
   );
@@ -113,7 +122,7 @@ const AuctionActivity: React.FC<AuctionActivityProps> = (props: AuctionActivityP
               <AuctionActivityDateHeadline startTime={auction.startTime} />
             </Col>
             <Col lg={12} className={classes.colAlignCenter}>
-              <AuctionActivityNounTitle nounId={auction.nounId} />
+              <AuctionActivityNounTitle nounId={auction.nounId} startTime={auction.startTime} />
               {displayGraphDepComps && (
                 <AuctionNavigation
                   isFirstAuction={isFirstAuction}

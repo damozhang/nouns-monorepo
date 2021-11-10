@@ -36,7 +36,7 @@ const NounderNounContent: React.FC<{
             <AuctionActivityDateHeadline startTime={mintTimestamp} />
           </Col>
           <Col lg={12} className={auctionActivityClasses.colAlignCenter}>
-            <AuctionActivityNounTitle nounId={nounId} />
+            <AuctionActivityNounTitle nounId={nounId}  startTime={mintTimestamp} />
             <AuctionNavigation
               isFirstAuction={isFirstAuction}
               isLastAuction={isLastAuction}

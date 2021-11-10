@@ -1,9 +1,16 @@
 import { BigNumber } from 'ethers';
 import classes from './AuctionActivityNounTitle.module.css';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 
-const AuctionActivityNounTitle: React.FC<{ nounId: BigNumber }> = props => {
-  const { nounId } = props;
-  const nounIdContent = `Noun ${nounId.toString()}`;
+dayjs.extend(utc);
+const AuctionActivityNounTitle: React.FC<{ nounId: BigNumber, startTime: BigNumber }> = props => {
+  const { nounId, startTime } = props;
+  // const nounIdContent = `Today ${nounId.toString()}`;
+  const auctionStartTimeUTC = dayjs(startTime.toNumber() * 1000)
+    .utc()
+    .format('MMDD');
+  const nounIdContent = `DAY ${auctionStartTimeUTC}`;
   return (
     <div className={classes.wrapper}>
       <h1>{nounIdContent}</h1>
