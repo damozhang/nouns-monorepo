@@ -25,15 +25,15 @@ const Documentation = () => {
         <div className={classes.headerWrapper}>
           <h1>WTF?</h1>
           <p>
-            Nouns are an experimental attempt to improve the formation of on-chain avatar
+            DAYs are an experimental attempt to improve the formation of on-chain avatar
             communities. While projects such as {cryptopunksLink} have attempted to bootstrap
             digital community and identity, Nouns attempt to bootstrap identity, community,
             governance and a treasury that can be used by the community.
           </p>
-          <p>
+          {/* <p>
             Learn more about on-chain nouns below, or make some off-chain nouns using{' '}
             {playgroundLink}.
-          </p>
+          </p> */}
         </div>
         <Accordion flush>
           <Accordion.Item eventKey="0" className={classes.accordionItem}>
@@ -42,10 +42,10 @@ const Documentation = () => {
               <ul>
                 <li>nouns artwork is {publicDomainLink}</li>
                 <li>1 noun trustlessly auctioned every 24 hours, forever</li>
-                <li>100% of noun auction proceeds are trustlessly sent to Nouns DAO treasury</li>
+                <li>100% of noun auction proceeds are trustlessly sent to DAY DAO treasury</li>
                 <li>settlement of one auction kicks off the next</li>
-                <li>all nouns are members of Nouns DAO</li>
-                <li>Nouns DAO uses a fork of {compoundGovLink}</li>
+                <li>all nouns are members of DAY DAO</li>
+                <li>DAY DAO uses a fork of {compoundGovLink}</li>
                 <li>1 noun = 1 vote</li>
                 <li>treasury is controlled exclusively by nouns via governance</li>
                 <li>artwork is generative and stored directly on-chain (not IPFS)</li>
@@ -63,7 +63,7 @@ const Documentation = () => {
               <p>
                 The Nouns Auction Contract will act as a self-sufficient noun generation and
                 distribution mechanism, auctioning one noun every 24 hours, forever. 100% of auction
-                proceeds (ETH) are automatically deposited in the Nouns DAO treasury, where they are
+                proceeds (ETH) are automatically deposited in the DAY DAO treasury, where they are
                 governed by noun owners.
               </p>
 
@@ -79,11 +79,11 @@ const Documentation = () => {
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2" className={classes.accordionItem}>
-            <Accordion.Header className={classes.accordionHeader}>Nouns DAO</Accordion.Header>
+            <Accordion.Header className={classes.accordionHeader}>DAY DAO</Accordion.Header>
             <Accordion.Body>
-              Nouns DAO utilizes a fork of {compoundGovLink} and is the main governing body of the
-              Nouns ecosystem. The Nouns DAO treasury receives 100% of ETH proceeds from daily noun
-              auctions. Each noun is an irrevocable member of Nouns DAO and entitled to one vote in
+              DAY DAO utilizes a fork of {compoundGovLink} and is the main governing body of the
+              Nouns ecosystem. The DAY DAO treasury receives 100% of ETH proceeds from daily noun
+              auctions. Each noun is an irrevocable member of DAY DAO and entitled to one vote in
               all governance matters. Noun votes are non-transferable (if you sell your noun the
               vote goes with it) but delegatable, which means you can assign your vote to someone
               else as long as you own your noun.
@@ -152,7 +152,7 @@ const Documentation = () => {
               <p>
                 The Noun Seeder contract is used to determine Noun traits during the minting
                 process. The seeder contract can be replaced to allow for future trait generation
-                algorithm upgrades. Additionally, it can be locked by the Nouns DAO to prevent any
+                algorithm upgrades. Additionally, it can be locked by the DAY DAO to prevent any
                 future updates. Currently, Noun traits are determined using pseudo-random number
                 generation:
               </p>
@@ -167,57 +167,31 @@ const Documentation = () => {
           </Accordion.Item>
           <Accordion.Item eventKey="7" className={classes.accordionItem}>
             <Accordion.Header className={classes.accordionHeader}>
-              Nounder's Reward
+              DAY dev's Reward
             </Accordion.Header>
             <Accordion.Body>
               <p>
-                'Nounders' are the group of ten builders that initiated Nouns. Here are the
-                Nounders:
+                'DAY devs' are the group of 2 builders that initiated Day. Here are the
+                DAY devs:
               </p>
               <ul>
                 <li>
                   <Link
-                    text="@cryptoseneca"
-                    url="https://twitter.com/cryptoseneca"
+                    text="@xxx"
+                    url="https://twitter.com/xxx"
                     leavesPage={true}
                   />
                 </li>
                 <li>
                   <Link
-                    text="@supergremplin"
-                    url="https://twitter.com/supergremplin"
-                    leavesPage={true}
-                  />
-                </li>
-                <li>
-                  <Link text="@punk4156" url="https://twitter.com/punk4156" leavesPage={true} />
-                </li>
-                <li>
-                  <Link text="@eboyarts" url="https://twitter.com/eBoyArts" leavesPage={true} />
-                </li>
-                <li>
-                  <Link text="@punk4464" url="https://twitter.com/punk4464" leavesPage={true} />
-                </li>
-                <li>solimander</li>
-                <li>
-                  <Link text="@dhof" url="https://twitter.com/dhof" leavesPage={true} />
-                </li>
-                <li>
-                  <Link text="@devcarrot" url="https://twitter.com/carrot_init" leavesPage={true} />
-                </li>
-                <li>
-                  <Link text="@TimpersHD" url="https://twitter.com/TimpersHD" leavesPage={true} />
-                </li>
-                <li>
-                  <Link
-                    text="@lastpunk9999"
-                    url="https://twitter.com/lastpunk9999"
+                    text="@yyy"
+                    url="https://twitter.com/yyy"
                     leavesPage={true}
                   />
                 </li>
               </ul>
               <p>
-                Because 100% of noun auction proceeds are sent to Nouns DAO, Nounders have chosen to
+                Because 100% of noun auction proceeds are sent to DAY DAO, Nounders have chosen to
                 compensate themselves with nouns. Every 10th noun for the first 5 years of the
                 project (noun ids #0, #10, #20, #30 and so on) will be automatically sent to the
                 Nounder's multisig to be vested and shared among the founding members of the

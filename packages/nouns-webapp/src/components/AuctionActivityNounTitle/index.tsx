@@ -5,7 +5,7 @@ import utc from 'dayjs/plugin/utc';
 
 dayjs.extend(utc);
 const AuctionActivityNounTitle: React.FC<{ nounId: BigNumber, startTime: BigNumber }> = props => {
-  const { nounId, startTime } = props;
+  const { startTime } = props;
   // const nounIdContent = `Today ${nounId.toString()}`;
   const auctionStartTimeUTC = dayjs(startTime.toNumber() * 1000)
     .utc()

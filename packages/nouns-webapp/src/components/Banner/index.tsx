@@ -12,9 +12,7 @@ const Banner = () => {
           <h1>
             ONE DAY,
             <br />
-            EVERY DAY,
-            <br />
-            FOREVER.
+            EVERY DAY
           </h1>
         </div>
       </Col>

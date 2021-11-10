@@ -6,7 +6,7 @@ task(
   'Start a hardhat node with test net, deploy contracts, and execute setup transactions',
 ).setAction(async (_, { ethers, run }) => {
   await run(TASK_COMPILE);
-  const contracts = await run('deploy-rinkeby --auctionDuration 10');
+  const contracts = await run('deploy-rinkeby');
 
   await run('populate-descriptor', {
     nftDescriptor: contracts.NFTDescriptor.instance.address,

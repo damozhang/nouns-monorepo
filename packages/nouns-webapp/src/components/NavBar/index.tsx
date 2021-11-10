@@ -13,7 +13,7 @@ import clsx from 'clsx';
 import config, { CHAIN_ID } from '../../config';
 import { utils } from 'ethers';
 import { buildEtherscanAddressLink } from '../../utils/etherscan';
-import { ExternalURL, externalURL } from '../../utils/externalURL';
+// import { ExternalURL, externalURL } from '../../utils/externalURL';
 
 const NavBar = () => {
   const activeAccount = useAppSelector(state => state.account.activeAccount);
@@ -111,17 +111,17 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/vote" className={classes.nounsNavLink}>
               DAO
             </Nav.Link>
-            <Nav.Link
+            {/* <Nav.Link
               href={externalURL(ExternalURL.notion)}
               className={classes.nounsNavLink}
               target="_blank"
               rel="noreferrer"
             >
               DOCS
-            </Nav.Link>
+            </Nav.Link> 
             <Nav.Link as={Link} to="/playground" className={classes.nounsNavLink}>
               PLAYGROUND
-            </Nav.Link>
+            </Nav.Link>*/}
             {activeAccount ? connectedContent : disconnectedContent}
           </Navbar.Collapse>
         </Container>
