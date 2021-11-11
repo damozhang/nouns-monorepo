@@ -85,7 +85,7 @@ const NavBar = () => {
               width="85"
               height="85"
               className="d-inline-block align-middle"
-              alt="Nouns DAO logo"
+              alt="DAY DAO logo"
             />
           </Navbar.Brand>
           {Number(CHAIN_ID) !== 1 && (

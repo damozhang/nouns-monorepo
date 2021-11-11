@@ -10,7 +10,7 @@ const GovernancePage = () => {
   return (
     <Section fullWidth={true}>
       <Col lg={{ span: 8, offset: 2 }}>
-        <h1 className={classes.heading}>Nouns DAO Governance</h1>
+        <h1 className={classes.heading}>DAY DAO Governance</h1>
         <p className={classes.subheading}>
           Nouns govern NounsDAO. Nouns can vote on proposals or delegate their vote to a third
           party. A minimum threshold of 1% of the total NOUN supply is required to submit proposals.
